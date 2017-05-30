@@ -29,8 +29,12 @@ def start_skill():
 def share_headlines():
     headlines = get_headlines()
     headline_msg = 'the current world news headlines are {}'.format(headlines)
-    return statement(headline_msg
-                     )
+    return statement(headline_msg)
+
+
+@ask.intent("NoIntent")
+def no_intent():
+    return statement("Okay... bye")
 
 if __name__ == '__main__':
     app.run()
