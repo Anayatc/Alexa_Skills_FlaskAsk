@@ -13,6 +13,8 @@ def get_headlines():
     pass
 
 @app.route('/')
+def homepage():
+    return "homepage"
 
 if __name__ = '__main__':
     app.run()
