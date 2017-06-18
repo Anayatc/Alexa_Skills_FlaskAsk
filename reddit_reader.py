@@ -11,8 +11,8 @@ ask = Ask(app, "/reddit_reader")
 
 
 def get_headlines():
-    user_pass_dict = {'user': 'USERNAME',
-                      'password': 'PASSWORD', # enter password
+    user_pass_dict = {'user': 'USERNAME',  # enter username
+                      'password': 'PASSWORD',  # enter password
                       'api_type': 'json'}
     sess = requests.session()
     sess.headers.update({'User-Agent': 'Alexa Request'})
@@ -21,7 +21,8 @@ def get_headlines():
     url = 'https://reddit.com/r/ubiquiti/.json?limit=10'
     html = sess.get(url)
     data = json.loads(html.content.decode('utf-8'))
-    titles = [unidecode.unidecode(listing['data']['title']) for listing in data['data']['children']]
+    titles = '... '.join(i for i in [unidecode.unidecode(listing['data']['title']) for listing in data['data']['children']])
+    return titles
 
 @app.route('/')
 def homepage():
