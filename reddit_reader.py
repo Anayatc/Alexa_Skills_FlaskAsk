@@ -24,6 +24,7 @@ def get_headlines():
     titles = '... '.join(i for i in [unidecode.unidecode(listing['data']['title']) for listing in data['data']['children']])
     return titles
 
+
 @app.route('/')
 def homepage():
     return "homepage"
@@ -48,3 +49,6 @@ def no_intent():
 
 if __name__ == '__main__':
     app.run()
+
+titles = get_headlines()
+print(titles)
